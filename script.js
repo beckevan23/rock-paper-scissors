@@ -15,46 +15,30 @@ function playRound(playerChoice, computerChoice) {
         console.log("Player Score: " + playerScore);
         console.log("Computer Score: " + computerScore);
     };
-    if (playerChoice.toLowerCase() == "rock" && computerChoice == "rock") {
+    if (playerChoice.toLowerCase() == computerChoice) {
         stats();
-        console.log("It is a draw. Rock v rock");
-    } else if (playerChoice.toLowerCase() == "rock" && computerChoice == "scissors") {
+        console.log(`%cIt is a draw, ${playerChoice.toLowerCase()} vs. ${computerChoice}`, "color: blue");
+    } else if (playerChoice.toLowerCase() == "rock" && computerChoice == "scissors" ||
+               playerChoice.toLowerCase() == "paper" && computerChoice == "rock" ||
+               playerChoice.toLowerCase() == "scissors" && computerChoice == "paper") {
         ++playerScore;
         stats();
-        console.log("You win. Rock beats scissors");
-    } else if (playerChoice.toLowerCase() == "rock" && computerChoice == "paper") {
+        console.log(`%cYou win, ${playerChoice.toLowerCase()} beats ${computerChoice}`, "color: green");
+    } else if (playerChoice.toLowerCase() == "rock" && computerChoice == "paper" ||
+               playerChoice.toLowerCase() == "paper" && computerChoice == "scissors" ||
+               playerChoice.toLowerCase() == "scissors" && computerChoice == "rock") {
         ++computerScore;
         stats();
-        console.log("You lose. Paper beats rock");
-    } else if (playerChoice.toLowerCase() == "paper" && computerChoice == "rock") {
-        ++playerScore;
-        stats();
-        console.log("You win. Paper beats rock");
-    } else if (playerChoice.toLowerCase() == "paper" && computerChoice == "scissors") {
-        ++computerScore;
-        stats();
-        console.log("You lose. Scissors beats paper");
-    } else if (playerChoice.toLowerCase() == "paper" && computerChoice == "paper") {
-        stats();
-        console.log("It is a draw. Paper v paper");
-    } else if (playerChoice.toLowerCase() == "scissors" && computerChoice == "rock") {
-        ++computerScore;
-        stats();
-        console.log("You lose. Rock beats scissors");
-    } else if (playerChoice.toLowerCase() == "scissors" && computerChoice == "paper") {
-        ++playerScore;
-        stats();
-        console.log("You win. Scissors beats paper");
+        console.log(`%cYou lose, ${computerChoice} beats ${playerChoice.toLowerCase()}`, "color: red");
     } else {
-        stats();
-        console.log("It is a draw. Scissors v scissors");
+        console.log("That is not a valid input");
     };
 };
 
 function game() {
     for (playerScore && computerScore; playerScore < 5 && computerScore < 5;) {
         playChoice = prompt("Enter rock, paper, or scissors", "Rock");
-        console.log(playRound(playChoice, compChoice()));
+        playRound(playChoice, compChoice());
     };
     if (playerScore == 5) {
         console.log("YOU WON THE GAME!");
@@ -63,4 +47,4 @@ function game() {
     };
 }
 
-console.log(game())
+game()
