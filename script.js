@@ -10,7 +10,7 @@ function compChoice() {
 
 function playRound(playerChoice, computerChoice) {
     function stats() {
-        console.log("Player: " + playChoice.toLowerCase());
+        console.log("Player: " + playerChoice.toLowerCase());
         console.log("Computer: " + computerChoice);
         console.log("Player Score: " + playerScore);
         console.log("Computer Score: " + computerScore);
@@ -45,6 +45,31 @@ function game() {
     } else if (computerScore == 5) {
         console.log("YOU LOST THE GAME!");
     };
-}
+};
 
-game()
+let buttonContainer = document.createElement('div');
+let rockBtn = document.createElement('button');
+rockBtn.textContent = "Rock";
+let paperBtn = document.createElement('button');
+paperBtn.textContent = "Paper";
+let scissorsBtn = document.createElement('button');
+scissorsBtn.textContent = "Scissors";
+document.body.appendChild(buttonContainer);
+buttonContainer.appendChild(rockBtn);
+buttonContainer.appendChild(paperBtn);
+buttonContainer.appendChild(scissorsBtn);
+let buttons = document.querySelectorAll('button');
+let array = Array.from(buttons)
+console.log(array)
+array.forEach(button => button.addEventListener('click', function roundPlay() {
+    if (playerScore < 5 && computerScore < 5) {
+        playRound(button.textContent, compChoice())
+        if (playerScore == 5) {
+            button.removeEventListener('click', roundPlay);
+            console.log("YOU WON THE GAME!");
+        } else if (computerScore == 5) {
+            button.removeEventListener('click', roundPlay);
+            console.log("YOU LOST THE GAME! (scrub)")
+            };
+    } 
+}));
