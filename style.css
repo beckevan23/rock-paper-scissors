@@ -1,0 +1,26 @@
+body {
+    background-color: #f1721e;
+}
+
+.buttonContainer {
+    display: flex;
+    width: 30vw;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #000000;
+    border-radius: 5%;
+    height: 246px;
+}
+
+button {
+    width: 30%;
+    margin: 10px 100px;
+    color: #f1721e;
+    background-color: #000000;
+    border-radius: 15%;
+}
